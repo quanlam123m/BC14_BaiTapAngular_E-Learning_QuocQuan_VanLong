@@ -1,0 +1,99 @@
+<div class="container-fluid page">
+  <div class="d-flex page__box p-3 mt-2">User Management</div>
+  <div class="page__content shadow p-3 position-relative">
+    <div class="limiter">
+      <div class="container-table100 pt-5">
+        <div class="wrap d-flex flex-start">
+          <div class="search">
+            <input
+              type="text"
+              class="searchTerm"
+              placeholder="Nhập vào tên hoặc tài khoản người dùng"
+            />
+            <button (click)="findUser()" type="submit" class="searchButton">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+          <a routerLink="add-users">
+            <button class="mx-3" mat-raised-button color="primary">Thêm</button>
+          </a>
+        </div>
+        <div class="wrap-table100">
+          <div class="table100">
+            <table>
+              <thead>
+                <tr class="table100-head">
+                  <th class="column1">STT</th>
+                  <th class="column2">Tài khoản</th>
+                  <th class="column3">Họ Tên</th>
+                  <th class="column4">Email</th>
+                  <th class="column5">Số điện thoại</th>
+                  <th class="column6">Loại</th>
+                  <th class="column7">Thao tác</th>
+                </tr>
+              </thead>
+              <ng-container *ngIf="listUser">
+                <tbody>
+                  <tr
+                    *ngFor="
+                      let user of listUser
+                        | slice: (page - 1) * pageSize:page * pageSize;
+                      let index = index
+                    "
+                  >
+                    <td class="column1">
+                      {{ index + 1 + (page - 1) * pageSize }}
+                    </td>
+                    <td class="column2">{{ user.taiKhoan }}</td>
+                    <td class="column3">{{ user.hoTen }}</td>
+                    <td class="column4">{{ user.email }}</td>
+                    <td class="column5">{{ user.soDt }}</td>
+                    <td class="column6">{{ user.maLoaiNguoiDung }}</td>
+                    <td class="column7">
+                      <div class="example-button-row">
+                        <div class="example-flex-container">
+                          <button
+                            mat-button
+                            color="primary"
+                            data-toggle="modal"
+                            data-target="#modalRegisterCourse"
+                          >
+                            Ghi danh
+                          </button>
+                          <a routerLink="edit-users">
+                            <button
+                              mat-icon-button
+                              color="accent"
+                              (click)="editUser(user)"
+                            >
+                              <mat-icon>edit</mat-icon>
+                            </button>
+                          </a>
+
+                          <button
+                            (click)="deleteUser(user.taiKhoan)"
+                            mat-icon-button
+                            color="warn"
+                          >
+                            <mat-icon>close</mat-icon>
+                          </button>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </ng-container>
+            </table>
+            <ngb-pagination
+              class="d-flex justify-content-end pt-3"
+              [(page)]="page"
+              [pageSize]="pageSize"
+              [collectionSize]="listUser.length"
+              size="sm"
+            ></ngb-pagination>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

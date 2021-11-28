@@ -1,0 +1,26 @@
+<mat-nav-list>
+  <div class="logo py-4">
+    <img src="/assets/img/error-img.png" alt="Company Logo" />
+  </div>
+  <mat-divider></mat-divider>
+  <br />
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="dashboard">
+    <mat-icon>dashboard</mat-icon> Dashboard
+  </a>
+  <a
+    mat-list-item
+    routerLinkActive="list-item-active"
+    routerLink="user-management"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >
+    <mat-icon>person</mat-icon> User
+  </a>
+  <a
+    mat-list-item
+    routerLinkActive="list-item-active"
+    routerLink="course-management"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >
+    <mat-icon>book</mat-icon> Course
+  </a>
+</mat-nav-list>

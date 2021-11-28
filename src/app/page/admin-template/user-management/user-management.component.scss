@@ -1,0 +1,39 @@
+@import "/src/assets/scss/table.scss";
+@import "/src/assets/scss/template";
+@import "/src/assets/scss/search.scss";
+
+.column1 {
+  width: 5%;
+  text-align: center !important;
+  padding: 0 5px;
+  color: #1e293b;
+  font-weight: 700;
+}
+
+.column2 {
+  width: 15%;
+}
+
+.column3 {
+  width: 20%;
+}
+
+.column4 {
+  width: 10%;
+  text-align: right;
+}
+
+.column5 {
+  width: 12%;
+  text-align: right;
+}
+
+.column6 {
+  width: 5%;
+  text-align: center !important;
+}
+.column7 {
+  width: 20%;
+  text-align: center !important;
+  // padding-right: 62px;
+}

@@ -1,0 +1,23 @@
+@import "/src/assets/scss/template";
+
+.notice {
+  font-size: 18px !important;
+  padding: 2px;
+}
+.file-input {
+  display: none;
+}
+button:focus {
+  outline-style: none;
+}
+.mat-mini-fab {
+  border-radius: 5px !important;
+}
+.upload__image {
+  display: flex;
+  margin: auto;
+  width: 100%;
+}
+.tile_image {
+  overflow: hidden;
+}

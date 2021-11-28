@@ -1,0 +1,189 @@
+<div class="container-fluid page">
+  <div class="d-flex page__box p-3 mt-2">Thêm người dùng</div>
+  <div class="page__content shadow p-3 position-relative">
+    <div class="card-body" style="color: #36304a">
+      <form #addUserForm="ngForm" (ngSubmit)="addUser(addUserForm.value)">
+        <div class="pl-lg-4">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label class="form-control-label" for="input-username"
+                  >Tài khoản</label
+                >
+                <input
+                  type="text"
+                  class="form-control form-control-alternative"
+                  placeholder="Username"
+                  name="taiKhoan"
+                  #TaiKhoan="ngModel"
+                  ngModel
+                  required
+                  minlength="7"
+                  maxlength="15"
+                />
+                <div
+                  class="alert alert-danger notice"
+                  *ngIf="
+                    TaiKhoan.errors && (TaiKhoan.dirty || TaiKhoan.touched)
+                  "
+                >
+                  <div *ngIf="TaiKhoan.errors.required">
+                    Tài khoản không được để trống.
+                  </div>
+                  <div
+                    *ngIf="
+                      TaiKhoan.errors.minlength || TaiKhoan.errors.maxlength
+                    "
+                  >
+                    Độ dài ký tự phải từ 7 đến 15.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label class="form-control-label" for="input-email"
+                  >Email address</label
+                >
+                <input
+                  type="email"
+                  class="form-control form-control-alternative"
+                  placeholder="email@example.com"
+                  name="email"
+                  ngModel
+                  required
+                  #Email="ngModel"
+                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                />
+                <div
+                  class="alert alert-danger notice"
+                  *ngIf="Email.errors && (Email.dirty || Email.touched)"
+                >
+                  <div *ngIf="Email.errors.required">Vui lòng nhập email</div>
+                  <div *ngIf="Email.errors.pattern">
+                    Email không đúng định dạng
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label class="form-control-label" for="input-first-name"
+                  >Mật khẩu</label
+                >
+                <input
+                  type="text"
+                  class="form-control form-control-alternative"
+                  placeholder="Password"
+                  name="matKhau"
+                  ngModel
+                  required
+                  #MatKhau="ngModel"
+                  minlength="7"
+                  maxlength="15"
+                />
+                <div
+                  class="alert alert-danger notice"
+                  *ngIf="MatKhau.errors && (MatKhau.dirty || MatKhau.touched)"
+                >
+                  <div *ngIf="MatKhau.errors.required">
+                    Mật khẩu không được để trống
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label class="form-control-label" for="input-last-name"
+                  >Họ tên</label
+                >
+                <input
+                  type="text"
+                  class="form-control form-control-alternative"
+                  placeholder="Fullname"
+                  name="hoTen"
+                  ngModel
+                  required
+                  #HoTen="ngModel"
+                />
+                <div
+                  class="alert alert-danger notice"
+                  *ngIf="HoTen.errors && (HoTen.dirty || HoTen.touched)"
+                >
+                  <div *ngIf="HoTen.errors.required">Vui lòng nhập họ tên</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr class="my-4" />
+        <div class="pl-lg-4">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label class="form-control-label" for="input-username"
+                  >Số điện thoại</label
+                >
+                <input
+                  type="text"
+                  class="form-control form-control-alternative"
+                  placeholder="Phone Number"
+                  name="soDT"
+                  ngModel
+                  required
+                  #SoDT="ngModel"
+                  minlength="8"
+                />
+                <div
+                  class="alert alert-danger notice"
+                  *ngIf="SoDT.errors && (SoDT.dirty || SoDT.touched)"
+                >
+                  <div *ngIf="SoDT.errors.required">
+                    Mật khẩu không được để trống
+                  </div>
+                  <div *ngIf="SoDT.errors.minlength">
+                    Số điện thoại phải từ 8 ký tự trở lên
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label class="form-control-label" for="input-username"
+                  >Loại người dùng</label
+                >
+                <select
+                  #idUser
+                  (change)="chooseUser(idUser.value)"
+                  class="form-control"
+                >
+                  <option selected hidden disabled>UserType</option>
+                  <option value="GV">Giáo viên</option>
+                  <option value="HV">Học viên</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-1 text-right pt-5 pl-3">
+            <button
+              mat-raised-button
+              [disabled]="!addUserForm.valid"
+              class="btn btn-danger"
+              type="submit"
+            >
+              Thêm
+            </button>
+          </div>
+        </div>
+      </form>
+
+      <div class="col-12 text-right pt-5 pl-3">
+        <a href="admin/user-management">
+          <button class="btn btn-info">Quay lại</button>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

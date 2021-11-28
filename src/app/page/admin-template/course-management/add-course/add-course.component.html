@@ -1,0 +1,259 @@
+<div class="container-fluid page">
+  <div class="d-flex page__box p-3 mt-2">Thêm khoá học</div>
+  <div class="page__content shadow p-3 position-relative">
+    <div class="card-body" style="color: #36304a">
+      <form #addCourseForm="ngForm" (ngSubmit)="addCourse(addCourseForm.value)">
+        <div class="pl-lg-4">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label class="form-control-label" for="input-username"
+                  >Mã khoá học</label
+                >
+                <input
+                  type="text"
+                  id="input-username"
+                  class="form-control form-control-alternative"
+                  name="maKhoaHoc"
+                  required
+                  ngModel
+                  #MaKhoaHoc="ngModel"
+                  minlength="7"
+                  maxlength="15"
+                />
+                <div
+                  class="alert alert-danger notice"
+                  *ngIf="
+                    MaKhoaHoc.errors && (MaKhoaHoc.dirty || MaKhoaHoc.touched)
+                  "
+                >
+                  <div *ngIf="MaKhoaHoc.errors.required">
+                    Mã khoá học không được để trống.
+                  </div>
+                  <div
+                    *ngIf="
+                      MaKhoaHoc.errors.minlength || MaKhoaHoc.errors.maxlength
+                    "
+                  >
+                    Độ dài ký tự phải từ 7 đến 15.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label class="form-control-label" for="input-username"
+                  >Danh mục khoá học</label
+                >
+                <select
+                  class="form-control"
+                  #idcourse
+                  (change)="chooseListCourse(idcourse.value)"
+                >
+                  <option selected hidden disabled>Chọn danh mục</option>
+                  <option value="FrontEnd">Lập trình FontEnd</option>
+                  <option value="BackEnd">Lập trình BackEnd</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label class="form-control-label" for="input-first-name"
+                  >Tên khoá học</label
+                >
+                <input
+                  type="text"
+                  id="input-first-name"
+                  class="form-control form-control-alternative"
+                  name="tenKhoaHoc"
+                  required
+                  ngModel
+                  #TenKhoaHoc="ngModel"
+                />
+                <div
+                  class="alert alert-danger notice"
+                  *ngIf="
+                    TenKhoaHoc.errors &&
+                    (TenKhoaHoc.dirty || TenKhoaHoc.touched)
+                  "
+                  KhoaHoc.dirty
+                  ||
+                  TenKhoaHoc.touched)
+                >
+                  <div *ngIf="TenKhoaHoc.errors.required">
+                    Tên khoá học không được để trống.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label class="form-control-label" for="input-last-name"
+                  >Lượt xem</label
+                >
+                <input
+                  type="text"
+                  id="input-last-name"
+                  class="form-control form-control-alternative"
+                  required
+                  ngModel
+                  name="luotXem"
+                  #LuotXem="ngModel"
+                  type="number"
+                />
+                <div
+                  class="alert alert-danger notice"
+                  *ngIf="LuotXem.errors && (LuotXem.dirty || LuotXem.touched)"
+                >
+                  <div *ngIf="LuotXem.errors.required">
+                    Đánh giá không được để trống.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr class="my-4" />
+
+        <div class="pl-lg-4">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label class="form-control-label" for="input-email"
+                  >Người tạo</label
+                >
+                <input
+                  type="text"
+                  id="input-email"
+                  class="form-control form-control-alternative"
+                  [(ngModel)]="userNameAdmin.taiKhoan"
+                  [value]="userNameAdmin"
+                  ngModel
+                  name="taiKhoanNguoiTao"
+                  #TaiKhoanNguoiTao="ngModel"
+                  readonly
+                />
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label class="form-control-label" for="input-email"
+                  >Bí danh</label
+                >
+                <input
+                  type="text"
+                  id="input-email"
+                  class="form-control form-control-alternative"
+                  required
+                  ngModel
+                  name="biDanh"
+                  #BiDanh="ngModel"
+                />
+                <div
+                  class="alert alert-danger notice"
+                  *ngIf="BiDanh.errors && (BiDanh.dirty || BiDanh.touched)"
+                >
+                  <div *ngIf="BiDanh.errors.required">
+                    Bí danh không được để trống.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label class="form-control-label" for="input-first-name"
+                  >Ngày tạo</label
+                >
+                <input
+                  type="date"
+                  id="input-first-name"
+                  class="form-control form-control-alternative"
+                  name="ngayTao"
+                  #NgayTao="ngModel"
+                  required
+                  ngModel
+                />
+                <div
+                  class="alert alert-danger notice"
+                  *ngIf="NgayTao.errors && (NgayTao.dirty || NgayTao.touched)"
+                >
+                  <div *ngIf="NgayTao.errors.required">
+                    Vui lòng chọn ngày tạo.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label class="form-control-label" for="input-last-name"
+                  >Hình ảnh</label
+                >
+                <div class="upload__image">
+                  <input
+                    style="display: hidden"
+                    type="file"
+                    class="file-input"
+                    (change)="onFileSelected($event)"
+                    #fileUpload
+                    accept="image/png,image/jpg,image/jpeg"
+                  />
+
+                  <div class="file-upload form-control tile_image">
+                    {{ fileName || "No file uploaded yet." }}
+                  </div>
+                  <div class="buttonimage">
+                    <button
+                      type="submit"
+                      mat-mini-fab
+                      color="primary"
+                      class="upload-btn"
+                      (click)="fileUpload.click()"
+                    >
+                      File
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="my-4" />
+        <div class="pl-lg-4">
+          <div class="form-group">
+            <label>Mô tả</label>
+            <textarea
+              name="moTa"
+              ngModel
+              required
+              #MoTa
+              rows="4"
+              class="form-control form-control-alternative"
+            >
+            </textarea>
+          </div>
+        </div>
+        <div class="col-1 text-right pt-5 pl-4">
+          <button
+            [disabled]="!addCourseForm.valid"
+            mat-raised-button
+            class="btn btn-danger"
+            type="submit"
+          >
+            Thêm
+          </button>
+        </div>
+      </form>
+
+      <div class="col-12 text-right pt-5 pl-3">
+        <a href="admin/course-management">
+          <button class="btn btn-info">Quay lại</button>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

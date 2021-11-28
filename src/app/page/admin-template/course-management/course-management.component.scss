@@ -1,0 +1,47 @@
+@import "/src/assets/scss/table.scss";
+@import "/src/assets/scss/template";
+@import "/src/assets/scss/search.scss";
+
+.column1 {
+  width: 5%;
+  text-align: center !important;
+  padding: 0 5px;
+  color: #1e293b;
+  font-weight: 700;
+}
+
+.column2 {
+  width: 15%;
+}
+
+.column3 {
+  width: 17%;
+  text-align: center !important;
+}
+
+.column-mota {
+  text-align: right;
+  width: 100%;
+  // white-space: pre-wrap;
+  overflow: hidden; // ẩn các nội dung khi kích thước lớn hơn chiều rộng khối bên ngoài
+  text-overflow: ellipsis; //thêm 3 dấu chấm ở cuối
+  -webkit-line-clamp: 3; // số dòng muốn hiển thị
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+}
+
+.column5 {
+  width: 10%;
+  text-align: center !important;
+}
+
+.column6 {
+  width: 15%;
+  text-align: center !important;
+}
+.column7 {
+  width: 20%;
+  text-align: center !important;
+}
+
+//Modal
